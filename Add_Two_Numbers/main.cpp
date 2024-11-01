@@ -78,22 +78,26 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2)
     // return integerToLinkedList(add);
 
     ListNode* dummy = new ListNode();
-    ListNode* current = dummy;
-    int carry = 0;
+    ListNode* tail = dummy;
+    int sum = 0;
 
-    while(l1 != nullptr || l2 != nullptr || carry != 0)
+    while(l1 != nullptr || l2 != nullptr || sum != 0)
     {
-        int v1 = (l1 != nullptr) ? l1 -> val : 0;
-        int v2 = (l2 != nullptr) ? l2 -> val : 0;
-        int val = v1 + v2 + carry;
+        if(l1 != nullptr)
+        {
+            sum += l1 -> val;
+            l1 = l1 -> next;
+        }
 
-        carry = val / 10;
-        val = val % 10;
-        current -> next = new ListNode(val);
-        current = current -> next;
+        if(l2 != nullptr)
+        {
+            sum += l2 -> val;
+            l2 = l2 -> next;
+        }
 
-        l1 = (l1 != nullptr) ? l1 -> next : nullptr;  
-        l2 = (l2 != nullptr) ? l2 -> next : nullptr;  
+        tail -> next = new ListNode(sum % 10);
+        tail = tail -> next;
+        sum /= 10;
     }
 
     return dummy -> next;
