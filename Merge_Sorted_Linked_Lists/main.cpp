@@ -1,5 +1,8 @@
-/*  Question: Given the beginning of a singly linked list head, reverse the list, and return
-    the new beginning of the list*/
+/*  
+    You're given the heads of two sorted linked lists list1 and list2
+    Merge the two lists into one sorted liked list and return the head of the new sorted linked list
+    The new list should be made up of nodes from list1 and list2
+*/
 
 #include <iostream>
 
@@ -98,6 +101,5 @@ int main()
     b2.next = &c2;
 
     printLinkedList(&a2);
-    printLinkedList(mergeTwoLists(&a1, &a2));
-    
+    printLinkedList(mergeTwoLists(&a1, &a2));   
 }
